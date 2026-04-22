@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "lib": ["ES6", "DOM"],
+    "outDir": "out/",
+    "rootDir": ".",
+    "sourceMap": true,
+    "mapRoot": ".",
+    "declaration": true,
+    "declarationMap": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "jsx": "react",
+    "strict": false,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "out",
+    "__tests__"
+  ]
+}

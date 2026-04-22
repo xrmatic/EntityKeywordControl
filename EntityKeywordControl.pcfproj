@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.PowerApps.MSBuild.Pcf/1.1.7">
+  <PropertyGroup>
+    <Name>EntityKeywordControl</Name>
+    <ProjectGuid>b2a3c4d5-e6f7-8901-abcd-ef1234567890</ProjectGuid>
+    <OutputPath>$(MSBuildThisFileDirectory)out</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageReferenceExists>true</PackageReferenceExists>
+    <TargetFrameworkIdentifier>Microsoft.PowerApps.MSBuild.Pcf</TargetFrameworkIdentifier>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerApps.MSBuild.Pcf" Version="1.1.7" />
+  </ItemGroup>
+</Project>

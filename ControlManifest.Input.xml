@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest>
+  <!--
+    EntityKeywordControl – ReactJS / Fluent UI PCF
+    Displays a Many-to-Many related list of keyword records as interactive tags.
+    Keywords support per-record colour, icon and grouping metadata.
+  -->
+  <control
+    namespace="XRMatic"
+    constructor="EntityKeywordControl"
+    version="1.0.0"
+    display-name-key="EntityKeywordControl_DisplayName"
+    description-key="EntityKeywordControl_Description"
+    control-type="virtual"
+  >
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         RELATIONSHIP CONFIGURATION
+         ════════════════════════════════════════════════════════════ -->
+
+    <!--
+      The logical name of the M2M relationship (schema name).
+      Example: "xrm_account_keyword"
+    -->
+    <property
+      name="relationshipName"
+      display-name-key="RelationshipName_DisplayName"
+      description-key="RelationshipName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="true"
+    />
+
+    <!--
+      Logical name of the keyword entity.
+      Example: "xrm_keyword"
+    -->
+    <property
+      name="relatedEntityName"
+      display-name-key="RelatedEntityName_DisplayName"
+      description-key="RelatedEntityName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="true"
+    />
+
+    <!--
+      OData entity-set name (plural) of the keyword entity.
+      Example: "xrm_keywords"
+    -->
+    <property
+      name="relatedEntitySetName"
+      display-name-key="RelatedEntitySetName_DisplayName"
+      description-key="RelatedEntitySetName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="true"
+    />
+
+    <!--
+      Schema name of the navigation property on the host entity that
+      points to the keyword entity through the M2M relationship.
+      Example: "xrm_account_keyword_xrm_keyword"
+    -->
+    <property
+      name="navigationPropertyName"
+      display-name-key="NavigationPropertyName_DisplayName"
+      description-key="NavigationPropertyName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="true"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         KEYWORD FIELD MAPPING
+         ════════════════════════════════════════════════════════════ -->
+
+    <!--
+      Field on the keyword entity used as the visible label.
+      Example: "xrm_name"
+    -->
+    <property
+      name="labelFieldName"
+      display-name-key="LabelFieldName_DisplayName"
+      description-key="LabelFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="true"
+    />
+
+    <!--
+      (Optional) Field on the keyword entity containing a hex colour
+      string (e.g. "#E8A202") used to tint the tag.
+    -->
+    <property
+      name="colorFieldName"
+      display-name-key="ColorFieldName_DisplayName"
+      description-key="ColorFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!--
+      (Optional) Field on the keyword entity containing a Fluent icon
+      name (e.g. "TagRegular") or an absolute URL to an image used as
+      the tag icon.
+    -->
+    <property
+      name="iconFieldName"
+      display-name-key="IconFieldName_DisplayName"
+      description-key="IconFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!--
+      (Optional) Field on the keyword entity used to group keywords
+      inside the picker panel (e.g. a category or department field).
+    -->
+    <property
+      name="groupFieldName"
+      display-name-key="GroupFieldName_DisplayName"
+      description-key="GroupFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!--
+      (Optional) Field on the keyword entity containing a description
+      shown as a tooltip or subtitle inside the picker.
+    -->
+    <property
+      name="descriptionFieldName"
+      display-name-key="DescriptionFieldName_DisplayName"
+      description-key="DescriptionFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!--
+      (Optional) Field on the keyword entity containing a sort order
+      integer that controls display ordering (ascending).
+    -->
+    <property
+      name="sortOrderFieldName"
+      display-name-key="SortOrderFieldName_DisplayName"
+      description-key="SortOrderFieldName_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         BEHAVIOUR TOGGLES
+         ════════════════════════════════════════════════════════════ -->
+
+    <!--
+      When true the user may associate additional keyword records to
+      the current record through the picker panel.
+    -->
+    <property
+      name="allowAssociate"
+      display-name-key="AllowAssociate_DisplayName"
+      description-key="AllowAssociate_Description"
+      of-type="TwoOptions"
+      usage="input"
+      required="false"
+    >
+      <default-value>true</default-value>
+    </property>
+
+    <!--
+      When true the user may dismiss (disassociate) keyword tags from
+      the current record.
+    -->
+    <property
+      name="allowDisassociate"
+      display-name-key="AllowDisassociate_DisplayName"
+      description-key="AllowDisassociate_Description"
+      of-type="TwoOptions"
+      usage="input"
+      required="false"
+    >
+      <default-value>true</default-value>
+    </property>
+
+    <!--
+      When true the "New Keyword" option is shown inside the picker
+      panel, allowing the user to create a new keyword record inline.
+    -->
+    <property
+      name="allowCreate"
+      display-name-key="AllowCreate_DisplayName"
+      description-key="AllowCreate_Description"
+      of-type="TwoOptions"
+      usage="input"
+      required="false"
+    >
+      <default-value>false</default-value>
+    </property>
+
+    <!--
+      Placeholder text shown in the keyword search input.
+    -->
+    <property
+      name="searchPlaceholder"
+      display-name-key="SearchPlaceholder_DisplayName"
+      description-key="SearchPlaceholder_Description"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false"
+    />
+
+    <!--
+      Maximum number of keyword tags shown inline before a "+N more"
+      overflow badge is rendered.  Set to 0 to show all.
+    -->
+    <property
+      name="maxVisibleTags"
+      display-name-key="MaxVisibleTags_DisplayName"
+      description-key="MaxVisibleTags_Description"
+      of-type="Whole.None"
+      usage="input"
+      required="false"
+    />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         RESOURCES
+         ════════════════════════════════════════════════════════════ -->
+    <resources>
+      <code path="index.ts" order="1" />
+    </resources>
+
+  </control>
+</manifest>
